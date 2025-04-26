@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Daily Inspiration</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Daily Inspiration</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <blockquote id="quote">Loading...</blockquote>
-    <p id="author"></p>
-  </div>
+    <div class="container">
+        <blockquote id="quote">Loading...</blockquote>
+        <p id="author"></p>
+    </div>
+    <script src="constants.js"></script>
 
-  <script>
-    function getDailyColor() {
-      const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-      let hash = 0;
-      for (let i = 0; i < today.length; i++) {
-        hash = today.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      const color = `hsl(${hash % 360}, 30%, 90%)`; // HSL makes soft pastel-like colors
-      return color;
-    }
-  
-    document.body.style.backgroundColor = getDailyColor();
-  
-    // Fetch and show the quote
-    fetch('http://localhost:3000/quote')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('quote').textContent = `"${data.text}"`;
-        document.getElementById('author').textContent = `– ${data.author}`;
-      })
+    <script>
+        function getDailyIndex(list) {
+            const today = new Date().toISOString().slice(0, 10);
+            let hash = 0;
+            for (let i = 0; i < today.length; i++) {
+                hash = today.charCodeAt(i) + ((hash << 5) - hash);
+            }
+
+            return Math.abs(hash) % list.length;
+        }
+
+        const bg = window.background[getDailyIndex(window.background)];
+
+          // Fetch and show the quote
+        fetch('http://localhost:3000/quote')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('quote').textContent = `"${data.text}"`;
+                document.getElementById('author').textContent = `– ${data.author}`;
+            })
       .catch(err => {
         document.getElementById('quote').textContent = "Could not load quote.";
       });
-  </script>
-  
+    </script>
+
 </body>
 </html>
