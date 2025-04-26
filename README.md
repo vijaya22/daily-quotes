@@ -1,6 +1,7 @@
 # 🌸 Daily Quotes 
 This is a simple website that displays a new inspirational quote every day, along with a random beautiful background (flowers, soft gradients, or floral images).
 Perfect for a little daily motivation! ✨
+Find it here - [daily-quotes](https://vijaya22.io/daily-quotes)
 
 📂 Project Structure
 ```
