@@ -11,6 +11,7 @@
         <p id="author"></p>
     </div>
     <script src="constants.js"></script>
+    <script src="quotes.js"></script>
 
     <script>
         function getDailyIndex(list) {
@@ -23,18 +24,18 @@
             return Math.abs(hash) % list.length;
         }
 
+        function getDailyQuote(quotes){
+            const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+            const hash = today.split('-').reduce((sum, part) => sum + parseInt(part), 0);
+            const quote = quotes[hash % quotes.length];
+            const data = quote;
+            document.getElementById('quote').textContent = `"${data.text}"`;
+            document.getElementById('author').textContent = `– ${data.author}`;
+        }
+        getDailyQuote(quotes)
+
         const bg = window.background[getDailyIndex(window.background)];
 
-          // Fetch and show the quote
-        fetch('http://localhost:3000/quote')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('quote').textContent = `"${data.text}"`;
-                document.getElementById('author').textContent = `– ${data.author}`;
-            })
-      .catch(err => {
-        document.getElementById('quote').textContent = "Could not load quote.";
-      });
     </script>
 
 </body>

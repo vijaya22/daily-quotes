@@ -1,4 +1,4 @@
-[
+const quotes = [
     { "text": "The best way to get started is to quit talking and begin doing.", "author": "Walt Disney" },
     { "text": "Don’t let yesterday take up too much of today.", "author": "Will Rogers" },
     { "text": "It's not whether you get knocked down, it's whether you get up.", "author": "Vince Lombardi" },
@@ -86,5 +86,5 @@
     { "text": "Keep your face always toward the sunshine—and shadows will fall behind you.", "author": "Walt Whitman" },
     { "text": "Success isn’t about how much money you make, it’s about the difference you make in people’s lives.", "author": "Michelle Obama" },
     { "text": "If you can’t fly then run, if you can’t run then walk, if you can’t walk then crawl, but whatever you do you have to keep moving forward.", "author": "Martin Luther King Jr." }
-  ]
+  ];
   
