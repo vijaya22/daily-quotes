@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Daily Inspiration</title>
     <link rel="stylesheet" href="./frontend/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWWCHSHLYP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WWWCHSHLYP');
+    </script>
 </head>
+
 <body>
     <div class="container">
         <blockquote id="quote">Loading...</blockquote>
@@ -24,7 +35,7 @@
             return Math.abs(hash) % list.length;
         }
 
-        function getDailyQuote(quotes){
+        function getDailyQuote(quotes) {
             const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
             const hash = today.split('-').reduce((sum, part) => sum + parseInt(part), 0);
             const quote = quotes[hash % quotes.length];
@@ -39,4 +50,5 @@
     </script>
 
 </body>
+
 </html>
